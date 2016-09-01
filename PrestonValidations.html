@@ -1,0 +1,336 @@
+<html>
+<head></head>
+<body>
+
+<p>
+
+<pre>
+1
+
+if (treeXYTreeMap(sfc_ab_map_x(iab),sfc_ab_map_y(iab)) .gt. 0 .and. treeMapFromConfig%configPartitioningMethod .eq. 1) then
+    Rnet_tot=Rnet_tot+maespaRnet +Rnet-sfc(i,sfc_emiss)*sigma*Tsfc(iab)**4 
+    Qh_tot=Qh_tot+  ( httc*(Tsfc(iab)-Tconv) ) +maespaQh
+    Qe_tot=Qe_tot+leFromEt 
+    Qg_tot=Qg_tot +(lambda_sfc(iab)*(Tsfc(iab)-sfc_ab(iab,sfc_ab_layer_temp))*2./sfc_ab(iab,6+3*numlayers) )  + maespaQg + maespaAbsorbedThermal
+
+2
+
+else
+    Rnet_tot=Rnet_tot+Rnet-sfc(i,sfc_emiss)*sigma*Tsfc(iab)**4 
+    Qh_tot=Qh_tot+  ( httc*(Tsfc(iab)-Tconv) ) 
+    Qe_tot=Qe_tot+leFromEt 
+    Qg_tot=Qg_tot+  (lambda_sfc(iab)*(Tsfc(iab)-sfc_ab(iab,sfc_ab_layer_temp))*2./sfc_ab(iab,6+3*numlayers) )  
+endif
+</pre>
+
+</p>
+<a href="files/PrestonValidations/1/EnergyBalance_Overall.xlsx">EnergyBalanceOverall.xlsx (1) </a>&nbsp;
+<a href="files/PrestonValidations/2/EnergyBalance_Overall.xlsx">EnergyBalanceOverall.xlsx (2) </a>
+<br>
+<img src="files/PrestonValidations/1/ClosureEnergyBalance_.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/ClosureEnergyBalance_.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/1/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/EnergyBalanceOverallAve_.png" width=700 height=600 />
+
+<br>
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation1/EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation2/EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+
+<br>
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation3/EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation4/EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+
+<br>
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation5/EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+
+
+
+<br>
+<img src="files/PrestonValidations/1/EnergyBalanceOverallSimple_2004-02-10.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/EnergyBalanceOverallSimple_2004-02-10.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/1/EnergyBalanceOverallSimple_2004-02-11.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/EnergyBalanceOverallSimple_2004-02-11.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/1/EnergyBalanceOverallSimple_2004-02-12.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/EnergyBalanceOverallSimple_2004-02-12.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/1/EnergyBalanceOverallSimple_2004-02-13.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/EnergyBalanceOverallSimple_2004-02-13.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/1/EnergyBalanceOverallSimple_2004-02-14.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/EnergyBalanceOverallSimple_2004-02-14.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/1/EnergyBalanceOverallSimple_2004-02-15.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/EnergyBalanceOverallSimple_2004-02-15.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/1/EnergyBalanceOverallSimple_2004-02-16.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/EnergyBalanceOverallSimple_2004-02-16.png" width=700 height=600 />
+<!--
+/home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation1/EnergyBalanceOverallAve_.png
+
+/home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation1/ClosureEnergyBalance_.png
+
+/home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation1/EnergyBalanceOverallSimple_2004-02-10.png
+EnergyBalanceOverallSimple_2004-02-11.png
+EnergyBalanceOverallSimple_2004-02-12.png
+EnergyBalanceOverallSimple_2004-02-13.png
+EnergyBalanceOverallSimple_2004-02-14.png
+EnergyBalanceOverallSimple_2004-02-15.png
+EnergyBalanceOverallSimple_2004-02-16.png
+-->
+
+<pre>
+
+\subsubsection{MAESPA energy flux conversions}
+
+Conversion of mmol/sec to w/m2
+
+\lstset{language=Fortran} 
+\begin{lstlisting}
+function convertmmolsecToWm2(mmol,width1,width2,hours)
+  real mmol
+  real convertmmolsecToWm2
+  real hours
+          
+  !mmol/sec (which is hrLE from Maespa hrflux)
+  !width1,2 are dimensions of plot (x meters, y meters)
+  !hours - length of time 
+          
+  !1 mole of water = 18.0152g
+  !1mm H2O = 1kg/m2
+  !1mm/day = 2.45 MJ m-2 day-1
+  !mmol/sec *  1 mol/1000mmol * 18.0152g/mol * 1kg/1000g * width1 (m) 
+  !        * width2 (m) * 60sec/1min * 60min/1hour * 24hour/day
+  ! * 2.45 MJ/m2*day * 10E06J/MJ * 1W/1J * 1day/24hour * 1hour/60min * 1hour/60sec 
+  !        
+  !convertmmolsecToWm2 = mmol /1000 * 18.0152 /1000 * width1 * width2 * 60 * 60 
+  !      * 24 *2.45 * 10E06 /24 / 60 /60 * hours
+  convertmmolsecToWm2 = mmol * 18.0152 * width1 * width2 * 2.45 * hours         
+end function convertmmolsecToWm2
+\end{lstlisting}
+
+conversion of mm of ET to w/m2 Qe
+
+\begin{lstlisting}
+function convertMMETToLEWm2(mm,width1,width2,hours)
+  real mm
+  real convertMMETToLEWm2
+  real hours
+          
+  !width1,2 are dimensions of plot, x meters, y meters
+  !mm is mm of ET
+  !18.0152ml/mol of water
+  !heat of vaporization 40.7 KJ/mol
+          
+  !time (hours) * mm ET * 1M/1000mm * width1 (m) * width2 (m) 10E+06ml/m^3 
+  !   * 1 mol/18.0152ml * 40.7 KJ/mol *  1W/1000KJ/sec * 60 sec/1 min 
+  !   * 60 min/hour * hours
+          
+  convertMMETToLEWm2=hours * mm * width1 * width2 / 18.0152 * 40.7 * 60*60           
+end function convertMMETToLEWm2
+\end{lstlisting}
+
+\subsection{MAESPA energy flux partitioning logic}
+
+\subsection{Loading from file}
+
+All varables read from MAESPA for each timestep:
+
+\begin{lstlisting}
+read(WATBALDAT_FILE) watday,wathour,wsoil,wsoilroot,ppt,canopystore, 
+    evapstore,drainstore,tfall,et,etmeas,discharge,overflow,weightedswp,ktot,
+    drythick,soilevap,soilmoist,fsoil,qh,qe,qn,qc,rglobund,rglobabv,radinterc,
+    rnet,totlai,wattair,soilt1,soilt2,fracw1,fracw2,fracaPAR
+read(HRFLXDAT_FILE) DOY,Tree,Spec,HOUR,hrPAR,hrNIR,hrTHM,hrPs,hrRf,
+    hrRmW,hrLE,LECAN,Gscan,Gbhcan,hrH,TCAN,ALMAX,PSIL,PSILMIN,CI,TAIR,VPD,PAR,
+    ZEN,AZ     
+if (loadUspar .eqv. .TRUE.) then
+  read(USPARDAT_FILE) usparday,usparhour,usparpoint,usparX,usparY,
+    usparZ,usparPARbeam,usparPARdiffuse,usparPARtotal,usparAPAR,
+    usparhrPSus,usparhrETus
+\end{lstlisting}
+
+\begin{lstlisting}
+leFromEt = convertMMETToLEWm2(et,width1,width2,hours)/area/area 
+leFromHrLe = convertmmolsecToWm2(hrLE,width1,width2,hours)/area/area
+
+!! new change, qe is now total from watbal of et, canopystore, evapstore
+qeCalc = leFromEt + convertMMETToLEWm2(canopystore,width1,width2,hours)
+    /area/area+ convertMMETToLEWm2(evapstore,width1,width2,hours)/area/area  
+!! Qg is qc
+!! rnet is rnet
+!! Qh is residual from the above values
+qhCalc = rnet - qc - qeCalc
+
+!! qe = qeCalc
+!! qg = qc
+!! rnet = rnet
+!! qh = qhCalc                                      
+           
+if (loadUspar .eqv. .TRUE.) then
+     leFromUspar = convertmmolsecToWm2(usparhrETus,width1,width2,hours)
+         /area/area
+else
+     leFromUspar = -0
+endif
+\end{lstlisting}
+
+\subsection{Partitioning in timestep}
+
+\begin{lstlisting}
+!use data during each timestep
+leFromEt =0
+maespaAbsorbedThermal = 0
+maespaRnet = 0
+maespaQh = 0
+maespaQg = 0
+
+if (treeXYMap(x,y) .ne. 0) then                
+  tempTimeis = int(timeis*2)
+  if (tempTimeis .lt. 1) tempTimeIs = 1   
+  ! set Tsfc to MAESPA Tcan temp from hrflux             
+  Tsfc=TCAN+273.15  
+  
+  !! only use LE from the trunk grid square              
+  if (treeXYTreeMap(x,y) .gt. 0) then                         
+    maespaAbsorbedThermal=hrTHM/configTreeMapGridSize*configTreeMapGridSize                    
+    leFromEt = qeCalc
+    maespaRnet = rnet
+    maespaQh = qhCalc
+    maespaQg = qc
+  endif
+endif
+            
+!! use Maespa Rnet for Maespa grids
+if (treeXYTreeMap(x,y) .gt. 0 .and. configPartitioningMethod .eq. 1) then
+  Rnet_tot=Rnet_tot+maespaRnet +Rnet-sfc_emiss*sigma*Tsfc**4 
+  Qh_tot=Qh_tot+  ( httc*(Tsfc-Tconv) ) +maespaQh
+  Qe_tot=Qe_tot+leFromEt 
+  Qg_tot=Qg_tot +(lambda_sfc*(Tsfc-sfc_ab_layer_temp)*2./numlayers) )  
+     + maespaQg + maespaAbsorbedThermal
+else
+  Rnet_tot=Rnet_tot+Rnet-sfc_emiss*sigma*Tsfc**4 
+  Qh_tot=Qh_tot+  ( httc*(Tsfc-Tconv) ) 
+  Qe_tot=Qe_tot+leFromEt 
+  Qg_tot=Qg_tot+  (lambda_sfc*(Tsfc-sfc_ab_layer_temp)*2./numlayers )  
+endif 
+\end{lstlisting}
+</pre>
+
+<hr>
+<pre>
+if (treeXYTreeMap(sfc_ab_map_x(iab),sfc_ab_map_y(iab)) .gt. 0 .and. treeMapFromConfig%configPartitioningMethod .eq. 1) then
+    Rnet_tot=Rnet_tot+maespaRnet +Rnet-sfc(i,sfc_emiss)*sigma*Tsfc(iab)**4 
+    !print *,'rnet maespa (1st) using instead',maespaRnet,Rnet-sfc(i,sfc_emiss)*sigma*Tsfc(iab)**4 
+    Qh_tot=Qh_tot+  ( httc*(Tsfc(iab)-Tconv) ) +maespaQh
+    Qe_tot=Qe_tot+leFromEt 
+    Qg_tot=Qg_tot +(lambda_sfc(iab)*(Tsfc(iab)-sfc_ab(iab,sfc_ab_layer_temp))*2./sfc_ab(iab,6+3*numlayers) )  + maespaQg + maespaAbsorbedThermal
+endif
+if (treeXYTreeMap(sfc_ab_map_x(iab),sfc_ab_map_y(iab)) .gt. 0 .and. treeMapFromConfig%configPartitioningMethod .eq. 2) then
+    Rnet_tot=Rnet_tot+Rnet-sfc(i,sfc_emiss)*sigma*Tsfc(iab)**4 
+    Qh_tot=Qh_tot+  ( httc*(Tsfc(iab)-Tconv) ) 
+    Qe_tot=Qe_tot+leFromEt 
+    Qg_tot=Qg_tot+  (lambda_sfc(iab)*(Tsfc(iab)-sfc_ab(iab,sfc_ab_layer_temp))*2./sfc_ab(iab,6+3*numlayers) )  
+endif  
+if (treeXYTreeMap(sfc_ab_map_x(iab),sfc_ab_map_y(iab)) .gt. 0 .and. treeMapFromConfig%configPartitioningMethod .eq. 3) then
+    Rnet_tot=Rnet_tot+Rnet-maespaRnet 
+    Qh_tot=Qh_tot+  maespaQh
+    Qe_tot=Qe_tot+leFromEt 
+    Qg_tot=Qg_tot + maespaQg + maespaAbsorbedThermal
+endif
+if (treeXYTreeMap(sfc_ab_map_x(iab),sfc_ab_map_y(iab)) .gt. 0 .and. treeMapFromConfig%configPartitioningMethod .eq. 4) then
+    Rnet_tot=Rnet_tot+Rnet-sfc(i,sfc_emiss)*sigma*Tsfc(iab)**4 -maespaRnet 
+    Qh_tot=Qh_tot+  maespaQh
+    Qe_tot=Qe_tot+leFromEt 
+    Qg_tot=Qg_tot + maespaQg + maespaAbsorbedThermal
+endif
+        
+     
+</pre>
+
+<a href="files/PrestonValidations/3/EnergyBalance_Overall.xlsx">EnergyBalanceOverall.xlsx (3) </a>&nbsp;
+<a href="files/PrestonValidations/4/EnergyBalance_Overall.xlsx">EnergyBalanceOverall.xlsx (4) </a>
+<br>
+<img src="files/PrestonValidations/3/ClosureEnergyBalance_.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/ClosureEnergyBalance_.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/3/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/EnergyBalanceOverallAve_.png" width=700 height=600 />
+
+
+<br>
+<img src="files/PrestonValidations/3/EnergyBalanceOverallSimple_2004-02-10.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/EnergyBalanceOverallSimple_2004-02-10.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/3/EnergyBalanceOverallSimple_2004-02-11.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/EnergyBalanceOverallSimple_2004-02-11.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/3/EnergyBalanceOverallSimple_2004-02-12.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/EnergyBalanceOverallSimple_2004-02-12.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/3/EnergyBalanceOverallSimple_2004-02-13.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/EnergyBalanceOverallSimple_2004-02-13.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/3/EnergyBalanceOverallSimple_2004-02-14.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/EnergyBalanceOverallSimple_2004-02-14.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/3/EnergyBalanceOverallSimple_2004-02-15.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/EnergyBalanceOverallSimple_2004-02-15.png" width=700 height=600 />
+
+<br>
+<img src="files/PrestonValidations/3/EnergyBalanceOverallSimple_2004-02-16.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/EnergyBalanceOverallSimple_2004-02-16.png" width=700 height=600 />
+
+<hr>
+<img src="files/PrestonValidations/1/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="files/PrestonValidations/2/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="files/PrestonValidations/3/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="files/PrestonValidations/4/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="files/PrestonValidations/5/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="files/PrestonValidations/6/EnergyBalanceOverallAve_.png" width=700 height=600 />
+
+
+<hr>
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/grid/PrestonValidation6/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/grid/PrestonValidation6/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/grid/PrestonValidation6/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/grid/PrestonValidation6/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/grid/PrestonValidation6/EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="/home/kerryn/Documents/Work/VTUF-Runs/grid/PrestonValidation6/EnergyBalanceOverallAve_.png" width=700 height=600 />
+
+
+
+</body>
+</html>
+
+
+<!--
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/ClosureEnergyBalance_.png
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalanceOverallAve_.png
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalanceOverallSimple_2004-02-10.png
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalanceOverallSimple_2004-02-11.png
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalanceOverallSimple_2004-02-12.png
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalanceOverallSimple_2004-02-13.png
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalanceOverallSimple_2004-02-14.png
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalanceOverallSimple_2004-02-15.png
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalanceOverallSimple_2004-02-16.png
+ln -s /home/kerryn/Documents/Work/VTUF-Runs/PrestonValidation6/EnergyBalance_Overall.xlsx
+
+-->
+

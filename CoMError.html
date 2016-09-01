@@ -1,0 +1,124 @@
+<html>
+<head></head>
+<body>
+
+<br>GeorgeValidation1b3 - new grass parameterization and Tmrt calculations using observed Ldown and observed Ldown to calculate lup
+<br>GeorgeValidation1b2 - new grass parameterization and Tmrt calculations using observed Ldown
+<br>GeorgeValidation1b - new grass parameterization
+<br>GeorgeValidation1 - old grass parameterization
+<br>GippValidation1b - new grass parameterization
+<br>GippValidation1 - old grass parameterization
+<br>See <a href="CoMError.html#code">code</a> for calculation variations
+<hr>
+
+<br><b>George St Errors - new grass parameterization and Tmrt calculations using observed Ldown and observed Ldown to calculate lup</b><br>
+<br><b><font color="red">Tmrt</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1b3-ErrorPlots-Tmrt3.png"  />
+<br><b><font color="red">Tsfc</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1b3-ErrorPlots-Tsfc3.png"  />
+<br><b><font color="red">UTCI</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1b3-ErrorPlots-UTCI3.png"  />
+
+<br><b>George St Errors - new grass parameterization and Tmrt calculations using observed Ldown</b><br>
+<br><b><font color="red">Tmrt</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1b2-ErrorPlots-Tmrt2.png"  />
+<br><b><font color="red">Tsfc</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1b2-ErrorPlots-Tsfc2.png"  />
+<br><b><font color="red">UTCI</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1b2-ErrorPlots-UTCI2.png"  />
+
+
+
+<br><b>George St Errors - new grass parameterization</b><br>
+<br><b><font color="red">Tmrt</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1b-ErrorPlots-Tmrt.png"  />
+<br><b><font color="red">Tsfc</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1b-ErrorPlots-Tsfc.png"  />
+<br><b><font color="red">UTCI</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1b-ErrorPlots-UTCI.png"  />
+<br><img src="files/CoMValidations/GeorgeValidation1bEnergyBalanceOverallAve_.png"  />
+
+<hr>
+<br><b>George St Errors - old grass parameterization</b><br>
+<br><b><font color="red">Tmrt</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1-ErrorPlots-Tmrt.png"  />
+<br><b><font color="red">Tsfc</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1-ErrorPlots-Tsfc.png"  />
+<br><b><font color="red">UTCI</font></b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1-ErrorPlots-UTCI.png"  />
+<br><img src="files/CoMValidations/GeorgeValidation1EnergyBalanceOverallAve_.png"  />
+
+<hr>
+<br><b>Gipps St Errors - new grass parameterization</b><br>
+<br><b><font color="red">Tmrt</font></b><br>
+<br><img src="files/CoMValidations/GippsValidation1b-ErrorPlots-Tmrt.png"  />
+<br><b><font color="red">Tsfc</font></b><br>
+<br><img src="files/CoMValidations/GippsValidation1b-ErrorPlots-Tsfc.png"  />
+<br><b><font color="red">UTCI</font></b><br>
+<br><img src="files/CoMValidations/GippsValidation1b-ErrorPlots-UTCI.png"  />
+<br><img src="files/CoMValidations/GippValidation1bEnergyBalanceOverallAve_.png"  />
+
+<hr>
+
+<br><img src="files/CoMValidations/GippValidation1EnergyBalanceOverallAve_.png"  />
+
+<!--
+<br><b>George St Errors (old scheme)</b><br>
+<br><img src="files/CoMValidations/GeorgeValidation1-ErrorPlots-Tmrt-old.png"  />    
+<br><img src="files/CoMValidations/GeorgeValidation1-ErrorPlots-Tsfc-old.png"  />  
+<br><img src="files/CoMValidations/GeorgeValidation1-ErrorPlots-UTCI-old.png"  />
+-->
+
+<!--
+<br><b>Gipps St Errors (old Tmrt scheme)</b><br>
+<br><img src="files/CoMValidations/GippsValidation1-ErrorPlots-Tmrt.png"  />
+<br><img src="files/CoMValidations/GippsValidation1-ErrorPlots-Tsfc.png"  />
+<br><img src="files/CoMValidations/GippsValidation1-ErrorPlots-UTCI.png"  />
+
+-->
+
+<pre><a name=code />
+## read observed ldown from CoM observations
+obsLdown = rows[0][1]
+
+## read TUF-3D data files
+kd=kabsDat[j]
+ld=labsDat[j]
+ku=kreflDat[j]
+lu=lreflDat[j]
+Tsfc = tsfcDat[j]
+
+#read air temperature, wind speed, and vapor pressure from forcing data
+Ta = float(splitForcing[2])
+TaK = Ta+273.15
+ws = float(splitForcing[4])
+vapor = float(splitForcing[3])
+RH=UTCI.calcRH(Ta, vapor)
+        	
+w=46.5 * vapor / TaK
+eClear = 1-(1+w) * exp( -1*(1.2+3.0 * w)**0.5  )
+ldnNew = eClear * 5.67E-08 * TaK**4
+#scheme from Offerle2003        
+groundEmis=0.97    
+TsfcK = Tsfc+273.15
+#not currently using lupNew
+lupNew = groundEmis * 5.67E-08 * TsfcK**4 + (1-groundEmis) * ldnNew     
+#use observed ldown to calculate lup   
+lupNew2 = groundEmis * 5.67E-08 * TsfcK**4 + (1-groundEmis) * obsLdown
+  
+## For GeorgeValidation1b, use TUF-3D values for k and l
+Tmrt = UTCI.calcTmrt(kd, ld, ku, lu)
+utci=UTCI.fUTCI2(Ta, ws, RH, Tmrt)
+
+## For GeorgeValidation1b2, use TUF-3D values for kup, kdown, and lu. Use observed ldown for Tmrt calculations
+Tmrt2 = UTCI.calcTmrt(kd, obsLdown, ku, lu)
+utci2=UTCI.fUTCI2(Ta, ws, RH, Tmrt2)
+
+## For GeorgeValidation1b3, use TUF-3D values for k. Use observed ldown for Tmrt calculation. Also use observed ldown to calculate lup
+Tmrt3 = UTCI.calcTmrt(kd, obsLdown, ku, lupNew2)
+utci3=UTCI.fUTCI2(Ta, ws, RH, Tmrt3)
+</pre>        
+
+
+</body>
+</html>

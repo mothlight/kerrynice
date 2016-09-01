@@ -1,0 +1,152 @@
+<html>
+<head></head>
+<body>
+
+
+
+
+
+<a href="error.csv">error.csv</a>&nbsp;
+<br>
+
+<br><b>PrestonBaseNoVeg1</b><br>
+<p>This scheme is unimproved TUF-3D with no vegetation being modelled.
+<br>
+<img src="PrestonBaseNoVeg1-EnergyBalanceOverallAve_.png" width=700 height=600 />   
+<img src="PrestonBaseNoVeg1-ErrorPlots.png" width=700 height=600 />
+<br><img src="PrestonBaseNoVeg1ClosureEnergyBalance_.png" width=700 height=600 />
+
+<br><b>PrestonBase6</b><br>
+<p>This is the same as PrestonBase5 except instead of dividing by area (of the grid square) in convertMMETToLEWm2, it divides by the tree area (i.e. round tree = PI*R^2) which seems to make a very slight improvement. 
+<img src="PrestonBase6-EnergyBalanceOverallAve_.png" width=700 height=600 />    
+<img src="PrestonBase6-ErrorPlots.png" width=700 height=600 />  
+<br><img src="PrestonBase6ClosureEnergyBalance_.png" width=700 height=600 />
+
+<br><b>PrestonBase5</b><br>
+<p>This scheme is scheme 16. 
+<p> QeFromMaespa = convertMMETToLEWm2(et,hours)/area 
+<br>+ convertMMETToLEWm2(soilevap,hours)/area  
+<br>+ convertMMETToLEWm2(canopystore,hours)/area 
+<br>+ convertMMETToLEWm2(evapstore,hours)/area 
+<p> convertMMETToLEWm2=hours * mm * width1 * width2 / 18.0152mole/ml * 40.7KJ/mole * 3600sec/hour
+<p>          !! this rnet value would have been calculated using the vegetation alb/emis
+ <br>          Rnet_tot=Rnet_tot+Rnet-sfc(sfc_emiss)*sigma*Tsfc**4 
+<br>           Qh_tot=Qh_tot+  ( httc*(Tsfc-Tconv) ) 
+<br>           Qe_tot=Qe_tot+QeFromMaespa
+<br>           !! calculate Qg as a residual from rnet
+<br>           Qg_tot=Qg_tot+ (Rnet-sfc(sfc_emiss)*sigma*Tsfc**4) - ( httc*(Tsfc-Tconv) ) - QeFromMaespa
+
+<p> 
+<img src="PrestonBase5-EnergyBalanceOverallAve_.png" width=700 height=600 />    
+<img src="PrestonBase5-ErrorPlots.png" width=700 height=600 />  
+<br><img src="PrestonBase5ClosureEnergyBalance_.png" width=700 height=600 />
+
+
+
+<br><b>Intercomparision Values</b><br>
+<br><img src="IntercompareR2.png" />
+<br><img src="IntercompareRMSE.png"  />
+<br><img src="IntercompareD.png"  />
+
+
+<br>PrestonBase4<br>
+<img src="PrestonBase4-EnergyBalanceOverallAve_.png" width=700 height=600 />    
+<img src="PrestonBase4-ErrorPlots.png" width=700 height=600 />  
+
+
+<br>PrestonBase3<br>
+<img src="PrestonBase3-EnergyBalanceOverallAve_.png" width=700 height=600 />    
+<img src="PrestonBase3-ErrorPlots.png" width=700 height=600 />  
+
+
+
+<br>PrestonValidation13<br>
+<img src="PrestonValidation13-EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="PrestonValidation13-ErrorPlots.png" width=700 height=600 />
+
+
+<br>PrestonBase1<br>
+<img src="PrestonBase1-EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="PrestonBase1-ErrorPlots.png" width=700 height=600 />
+
+
+
+
+<br>PrestonBase2<br>
+<img src="PrestonBase2-EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="PrestonBase2-ErrorPlots.png" width=700 height=600 />
+
+
+<br>PrestonValidation12<br>
+<img src="PrestonValidation12-EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="PrestonValidation12-ErrorPlots.png" width=700 height=600 />
+
+
+
+<br>PrestonValidation1<br>
+<img src="PrestonValidation1-EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="PrestonValidation1-ErrorPlots.png" width=700 height=600 />
+
+<br>PrestonValidation2<br>
+<img src="PrestonValidation2-EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="PrestonValidation2-ErrorPlots.png" width=700 height=600 />
+
+
+
+<br>PrestonValidation3<br>
+<img src="PrestonValidation3-EnergyBalanceOverallAve_.png" width=700 height=600 />                        
+<img src="PrestonValidation3-ErrorPlots.png" width=700 height=600 />
+
+
+  
+
+<br>  PrestonValidation4<br>
+<img src="PrestonValidation4-EnergyBalanceOverallAve_.png" width=700 height=600 />                    
+<img src="PrestonValidation4-ErrorPlots.png" width=700 height=600 />
+     
+
+<br>    PrestonValidation6  <br>         
+<img src="PrestonValidation6-EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="PrestonValidation6-ErrorPlots.png" width=700 height=600 />
+
+
+<br>    PrestonValidation9  <br>         
+<img src="PrestonValidation9-EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="PrestonValidation9-ErrorPlots.png" width=700 height=600 />
+
+<br>PrestonValidation10<br>
+<img src="PrestonValidation10-EnergyBalanceOverallAve_.png" width=700 height=600 /> 
+<img src="PrestonValidation10-ErrorPlots.png" width=700 height=600 />
+<br>PrestonValidation10b<br>
+<img src="PrestonValidation10b-EnergyBalanceOverallAve_.png" width=700 height=600 />  
+<img src="PrestonValidation10b-ErrorPlots.png" width=700 height=600 />  
+<br>PrestonValidation11<br>
+<img src="PrestonValidation11-EnergyBalanceOverallAve_.png" width=700 height=600 />
+<img src="PrestonValidation11-ErrorPlots.png" width=700 height=600 />                     
+
+
+
+<!--
+ <img src="PrestonValidation5-EnergyBalanceOverallAve_.png" width=700 height=600 />                                                          
+          
+<img src="PrestonBase1-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonBase2-EnergyBalanceOverallAveDiff_.png" width=700 height=600 /> 
+<img src="PrestonBase3-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonBaseNoVeg1-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation10b-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation10-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation11-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation1-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation2-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation3-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation4-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation5-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation6-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation9-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+<img src="PrestonValidation12-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />   
+<img src="PrestonValidation13-EnergyBalanceOverallAveDiff_.png" width=700 height=600 />
+-->
+
+</body>
+</html>
+

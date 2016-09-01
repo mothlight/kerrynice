@@ -1,0 +1,83 @@
+<html>
+<head></head>
+<body>
+
+
+<br>PrestonBrushboxDiff - using brushbox and differential shading turned on (using 20%/60%/100%) and old grass parameterization.
+<br>PrestonBrushboxDiff2 - using brushbox and differential shading turned off and new grass parameterization
+<br>PrestonBase7 - using olive and new grass parameterization
+<br>PrestonBase6 - using olive and old grass parameterization
+<br>PrestonBaseNoVeg1 - no vegetation baseline case
+<br>Intercomparision average max values
+<br>Intercomparision average min values
+<br>Intercomparision average mean values
+<hr>
+<br>
+<a href="error.csv">error.csv</a>&nbsp;
+<br>
+
+
+<br><center><b>d values</b></center>
+<br><img src="IntercomparisonMean-ErrorPlotsD.png" />
+<br><center><b>RMSE values</b></center>
+<br><img src="IntercomparisonMean-ErrorPlotsRMSE.png"  />
+
+
+
+<br><b>PrestonBase7</b><br>
+<p>This is the same as PrestonBase6 but using new grass parameterization. 
+<img src="PrestonBase7-EnergyBalanceOverallAve_.png"  />    
+<img src="PrestonBase7-ErrorPlots.png"  />  
+
+
+
+<br><b>PrestonBrushboxDiff2</b><br>
+<p>This is the same as PrestonBase7 but brushbox and differential shading turned off and new grass parameterization
+<img src="PrestonBrushboxDiff2-EnergyBalanceOverallAve_.png"  />    
+<img src="PrestonBrushboxDiff2-ErrorPlots.png"  />  
+
+<br><b>PrestonBrushboxDiff</b><br>
+<p>This is the same as PrestonBase but brushbox and differential shading turned on (using 20%/60%/100%) and old grass parameterization
+<img src="PrestonBrushboxDiff-EnergyBalanceOverallAve_.png"  />    
+<img src="PrestonBrushboxDiff-ErrorPlots.png"  />  
+
+
+<br><b>PrestonBase6</b><br>
+<p>This is the same as PrestonBase5 except instead of dividing by area (of the grid square) in convertMMETToLEWm2, it divides by the tree area (i.e. round tree = PI*R^2) which seems to make a very slight improvement. 
+<img src="PrestonBase6-EnergyBalanceOverallAve_.png"  />    
+<img src="PrestonBase6-ErrorPlots.png"  />  
+
+<br><b>PrestonBaseNoVeg1</b><br>
+<p>This scheme is unimproved TUF-3D with no vegetation being modelled.
+<br>
+<img src="PrestonBaseNoVeg1-EnergyBalanceOverallAve_.png"  />   
+<img src="PrestonBaseNoVeg1-ErrorPlots.png"  />
+
+<br><b>PrestonBase5</b><br>
+<p>This scheme is scheme 16. 
+<p> QeFromMaespa = convertMMETToLEWm2(et,hours)/area 
+<br>+ convertMMETToLEWm2(soilevap,hours)/area  
+<br>+ convertMMETToLEWm2(canopystore,hours)/area 
+<br>+ convertMMETToLEWm2(evapstore,hours)/area 
+<p> convertMMETToLEWm2=hours * mm * width1 * width2 / 18.0152mole/ml * 40.7KJ/mole * 3600sec/hour
+<p>          !! this rnet value would have been calculated using the vegetation alb/emis
+ <br>          Rnet_tot=Rnet_tot+Rnet-sfc(sfc_emiss)*sigma*Tsfc**4 
+<br>           Qh_tot=Qh_tot+  ( httc*(Tsfc-Tconv) ) 
+<br>           Qe_tot=Qe_tot+QeFromMaespa
+<br>           !! calculate Qg as a residual from rnet
+<br>           Qg_tot=Qg_tot+ (Rnet-sfc(sfc_emiss)*sigma*Tsfc**4) - ( httc*(Tsfc-Tconv) ) - QeFromMaespa
+
+<p> 
+<img src="PrestonBase5-EnergyBalanceOverallAve_.png"  />    
+<img src="PrestonBase5-ErrorPlots.png"  />  
+
+
+
+
+
+
+
+
+</body>
+</html>
+
